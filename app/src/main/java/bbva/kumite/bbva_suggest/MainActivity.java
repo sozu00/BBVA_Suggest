@@ -14,13 +14,13 @@ public class MainActivity
         extends AppCompatActivity
         implements CategoriesFragment.OnFragmentInteractionListener,
         recommendationfragment.OnFragmentInteractionListener,
-        helpfragment.OnFragmentInteractionListener
+        Optionsfragment.OnFragmentInteractionListener
         {
 
     private TextView mTextMessage;
     Fragment recommendationsFragment = new recommendationfragment();
     Fragment categoriesFragment = new CategoriesFragment();
-    Fragment settingsFragment;
+    Fragment settingsFragment = new Optionsfragment();
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -28,7 +28,7 @@ public class MainActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    setFragment(new recommendationfragment());
+                    setFragment(recommendationsFragment);
                     return true;
                 case R.id.navigation_categories:
                     setFragment(categoriesFragment);
