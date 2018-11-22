@@ -15,7 +15,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:text="Soporte y ayuda"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,7 +30,9 @@
         android:text="Contacto:"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="96dp" />
+        tools:layout_editor_absoluteY="96dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -56,7 +60,7 @@
         android:layout_marginLeft="57dp"
         android:layout_marginBottom="237dp"
         android:text="kumitebbva@gmail.com"
-        android:textSize="16dp
-" />
+        android:textSize="16dp"
+        />
 
-</>
+</RelativeLayout>
