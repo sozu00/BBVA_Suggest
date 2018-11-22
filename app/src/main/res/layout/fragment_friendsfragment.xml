@@ -31,4 +31,17 @@
         android:layout_marginBottom="117dp"
         android:src="@drawable/ic_join" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="56dp"
+        android:text="Invita a tus amigos"
+        android:textSize="35dp"/>
+
 </RelativeLayout>
