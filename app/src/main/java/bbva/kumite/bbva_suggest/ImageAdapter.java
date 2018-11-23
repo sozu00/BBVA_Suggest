@@ -15,20 +15,51 @@ public class ImageAdapter extends BaseAdapter {
 
     // Keep all Images in array
     public Integer[] mThumbIds = {
-            R.drawable.ic_books, R.drawable.ic_books,
-            R.drawable.ic_books, R.drawable.ic_books,
-            R.drawable.ic_books, R.drawable.ic_books,
-            R.drawable.ic_books, R.drawable.ic_books,
-            R.drawable.ic_books
+            R.drawable.ic_cat1, R.drawable.ic_cat2,
+            R.drawable.ic_cat3, R.drawable.ic_cat4,
+            R.drawable.ic_cat5, R.drawable.ic_cat6,
+            R.drawable.ic_cat7, R.drawable.ic_cat8,
+            R.drawable.ic_cat9
     };
     public Boolean[] mBWImages = {
-            false, false, false,
-            false, false, false,
-            false, false, false
+            true, true, true,
+            true, true, true,
+            true, true, true
     };
+
+    public ImageView[] imageViews;
     // Constructor
     public ImageAdapter(Context c){
         mContext = c;
+        imageViews = new ImageView[]{
+                new ImageView(mContext), new ImageView(mContext), new ImageView(mContext),
+                new ImageView(mContext), new ImageView(mContext), new ImageView(mContext),
+                new ImageView(mContext), new ImageView(mContext), new ImageView(mContext)
+        };
+        for (int i = 0; i < imageViews.length; i++) {
+            final int finalI = i;
+            imageViews[i].setImageResource(mThumbIds[finalI]);
+            imageViews[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageViews[i].setPadding(10,10,10,10);
+            imageViews[i].setLayoutParams(new GridView.LayoutParams(300, 300));
+
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(mBWImages[finalI]? 0 : 1);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            imageViews[i].setColorFilter(filter);
+
+            imageViews[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ColorMatrix matrix = new ColorMatrix();
+                    matrix.setSaturation(mBWImages[finalI]? 0 : 1);
+
+                    ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+                    imageViews[finalI].setColorFilter(filter);
+                    mBWImages[finalI] = !mBWImages[finalI];
+                }
+            });
+        }
     }
 
     @Override
@@ -48,23 +79,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final ImageView imageView = new ImageView(mContext);
-        imageView.setImageResource(mThumbIds[position]);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setPadding(10,10,10,10);
-        imageView.setLayoutParams(new GridView.LayoutParams(400, 400));
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation(mBWImages[position]? 0 : 1);
-
-                ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-                imageView.setColorFilter(filter);
-                mBWImages[position] = !mBWImages[position];
-            }
-        });
-        return imageView;
+          return imageViews[position];
     }
 
 
