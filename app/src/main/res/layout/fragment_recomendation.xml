@@ -9,7 +9,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewRecomm"
         android:layout_width="105dp"
         android:layout_height="125dp"
         android:src="@drawable/ic_kumite"
@@ -17,14 +17,22 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewRecomm"
         android:layout_width="260dp"
         android:layout_height="75dp"
         android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageViewRecomm"
+        android:layout_toRightOf="@+id/imageViewRecomm"
         android:text="¡Hola Carlos! Tus recomendaciones de hoy son..."
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="105dp"
-        android:layout_toRightOf="@+id/imageView2" />
+        tools:layout_editor_absoluteX="105dp" />
+
+    <ListView
+        android:id="@+id/listRecommendations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageViewRecomm"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

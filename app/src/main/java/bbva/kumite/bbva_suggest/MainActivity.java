@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity
         extends AppCompatActivity
         implements CategoriesFragment.OnFragmentInteractionListener,
@@ -18,9 +21,10 @@ public class MainActivity
         {
 
     private TextView mTextMessage;
-    Fragment recommendationsFragment = new RecommendationsFragment();
-    Fragment categoriesFragment = new CategoriesFragment();
-    Fragment settingsFragment = new SettingsFragment();
+    List<Recommendation> recommendations = new ArrayList<>();
+    Fragment recommendationsFragment = RecommendationsFragment.newInstance(recommendations);
+    Fragment categoriesFragment = CategoriesFragment.newInstance(recommendations);
+    Fragment settingsFragment = SettingsFragment.newInstance(recommendations);
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

@@ -7,39 +7,40 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link RecommendationsFragment.OnFragmentInteractionListener} interface
+ * {@link RecommendationDetail.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link RecommendationsFragment#newInstance} factory method to
+ * Use the {@link RecommendationDetail#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecommendationsFragment extends CustomFragment {
-    private final List<HashMap<String, Object>> recommendationsMap = new ArrayList<>();
-    ListView lv;
+public class RecommendationDetail extends Fragment {
+    private static final String ARG_PARAM1 = "param1";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+
     private OnFragmentInteractionListener mListener;
 
-    public RecommendationsFragment() {
+    public RecommendationDetail() {
+        // Required empty public constructor
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment RecommendationsFragment.
+     * @param param1 Parameter 1.
+     * @return A new instance of fragment RecommendationDetail.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecommendationsFragment newInstance(String param1) {
-        RecommendationsFragment fragment = new RecommendationsFragment();
+    public static RecommendationDetail newInstance(String param1, String param2) {
+        RecommendationDetail fragment = new RecommendationDetail();
         Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,43 +48,16 @@ public class RecommendationsFragment extends CustomFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {}
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_recomendation, container, false);
-
-        setRecommendations();
-        // Keys used in Hashmap
-        String[] from = { "icon","mTitle", "mDescription"};
-
-        // Ids of views in listview_layout
-        int[] to = { R.id.imgCategorySingle, R.id.textTitleSingle, R.id.textDescSingle};
-
-        lv = v.findViewById(R.id.listRecommendations);
-        // Instantiating an adapter to store each items
-        // R.layout.listview_layout defines the layout of each item
-        final RecommendationsListAdapter adapter = new RecommendationsListAdapter(v.getContext(), recommendationsMap, from, to);
-
-        lv.setAdapter(adapter);
-        return v;
-    }
-
-    private void setRecommendations() {
-        for(Recommendation rec : recommendations){
-            HashMap<String, Object> hm = new HashMap<>();
-            hm.put("mTitle", rec.mTitle);
-            hm.put("mDescription", rec.mDescription);
-            hm.put("mImageURL", Utilities.findCategory(rec.mImageURL));
-            hm.put("mDate", rec.mDate);
-            hm.put("mCategory", rec.mCategory);
-            hm.put("mPhoneNumber", rec.mPhoneNumber);
-            hm.put("mUrl", rec.mUrl);
-            recommendationsMap.add(hm);
-        }
+        return inflater.inflate(R.layout.fragment_recommendation_detail, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
