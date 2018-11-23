@@ -13,14 +13,14 @@ import android.widget.TextView;
 public class MainActivity
         extends AppCompatActivity
         implements CategoriesFragment.OnFragmentInteractionListener,
-        recommendationfragment.OnFragmentInteractionListener,
-        Optionsfragment.OnFragmentInteractionListener
+        RecommendationsFragment.OnFragmentInteractionListener,
+        SettingsFragment.OnFragmentInteractionListener
         {
 
     private TextView mTextMessage;
-    Fragment recommendationsFragment = new recommendationfragment();
+    Fragment recommendationsFragment = new RecommendationsFragment();
     Fragment categoriesFragment = new CategoriesFragment();
-    Fragment settingsFragment = new Optionsfragment();
+    Fragment settingsFragment = new SettingsFragment();
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
