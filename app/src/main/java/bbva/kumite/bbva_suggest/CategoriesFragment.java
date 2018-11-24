@@ -19,7 +19,7 @@ import android.widget.GridView;
  * Use the {@link CategoriesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CategoriesFragment extends CustomFragment {
+public class CategoriesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public CategoriesFragment() {

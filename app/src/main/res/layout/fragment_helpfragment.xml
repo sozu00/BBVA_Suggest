@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,60 +8,109 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
+
+
+    <ImageView
+        android:id="@+id/imageView_HelpIcon"
+        android:layout_width="109dp"
+        android:layout_height="101dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="12dp"
+        android:src="@android:drawable/ic_menu_help" />
+
+    <TextView
+        android:id="@+id/textView_HelpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
+        android:layout_alignTop="@+id/imageView_HelpIcon"
+        android:layout_toEndOf="@+id/imageView_HelpIcon"
+        android:layout_toRightOf="@+id/imageView_HelpIcon"
+        android:gravity="center_vertical"
         android:text="Soporte y ayuda"
-        android:textSize="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="152dp"
-        android:layout_height="49dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="121dp"
-        android:text="Contacto:"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="96dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="127dp"
-        android:layout_height="56dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="59dp"
-        android:layout_marginLeft="59dp"
-        android:layout_marginTop="219dp"
-        android:text="+34722312333"
-        android:textSize="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView_HelpInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView_HelpIcon"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginLeft="57dp"
-        android:layout_marginBottom="237dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp"
+        android:padding="30dp"
+        android:text="En caso de necesitar ayuda no dudes en contactar con nosotros."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/textView_HelpPhoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_HelpInfo"
+        android:layout_centerHorizontal="true"
+        android:text="Teléfono de contacto:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/textView_HelpPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_HelpPhoneTitle"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="+34722312333"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16dp"
+        app:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/textView_HelpMailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_HelpPhoneNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:text="Email:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/textView_HelpMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_HelpMailTitle"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
         android:text="kumitebbva@gmail.com"
         android:textSize="16dp"
-        />
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="sans-serif"  />
+
+    <TextView
+        android:id="@+id/textView_HelpEnding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_HelpMail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:text="¡Sigue disfrutando de la experiencia!"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="sans-serif" />
 
 </RelativeLayout>

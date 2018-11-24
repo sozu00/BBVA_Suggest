@@ -1,14 +1,19 @@
 package bbva.kumite.bbva_suggest;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 /**
@@ -19,7 +24,7 @@ import android.widget.Toast;
  * Use the {@link SettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingsFragment extends CustomFragment {
+public class SettingsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public SettingsFragment() {
@@ -51,17 +56,73 @@ public class SettingsFragment extends CustomFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_optionsfragment, container, false);
-
-        TextView text = v.findViewById(R.id.textView10);
-
-        text.setOnClickListener(new View.OnClickListener() {
+        final View v =  inflater.inflate(R.layout.fragment_optionsfragment, container, false);
+        FrameLayout logOffLayout = v.findViewById(R.id.frameLogOff);
+        logOffLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "HOLIIIIIII", Toast.LENGTH_SHORT).show();
+            public void onClick(final View v) {
+                AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(v.getContext());
+                }
+                builder.setTitle("Cerrar sesión")
+                        .setMessage("¿Estás seguro Carlos?\nTenemos muchos planes para tí.")
+                        .setPositiveButton("No quiero más recomendaciones por hoy", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(v.getContext(), LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Volvamos a la fiesta", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 
+        FrameLayout inviteFriends = v.findViewById(R.id.frameInviteAFriend);
+
+        inviteFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("message/rfc822");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{ ""});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "¡Únete a BBVA Suggest!");
+                intent.putExtra(Intent.EXTRA_TEXT, "Hola amigo, ¿qué te parecería unirte a BBVA Suggest y tener planes personalizados a diario?");
+                startActivity(Intent.createChooser(intent, "Elige la aplicación de correo:"));
+            }
+        });
+
+        FrameLayout helpText = v.findViewById(R.id.frameHelp);
+
+        helpText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                fragmentTransaction.replace(R.id.main_frame, new HelpFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        FrameLayout termsText = v.findViewById(R.id.frameTerms);
+        termsText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                fragmentTransaction.replace(R.id.main_frame, new TermsAndConditions());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return v;
     }
 

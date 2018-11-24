@@ -10,22 +10,23 @@
 
     <ImageView
         android:id="@+id/imageViewRecomm"
-        android:layout_width="105dp"
+        android:layout_width="125dp"
         android:layout_height="125dp"
-        android:src="@drawable/ic_kumite"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:src="@drawable/ic_kumite2"
+        android:padding="20dp"/>
 
     <TextView
         android:id="@+id/textViewRecomm"
-        android:layout_width="260dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/imageViewRecomm"
         android:layout_toRightOf="@+id/imageViewRecomm"
+        android:padding="20dp"
         android:text="¡Hola Carlos! Tus recomendaciones de hoy son..."
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="105dp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        app:fontFamily="sans-serif" />
 
     <ListView
         android:id="@+id/listRecommendations"

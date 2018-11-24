@@ -1,17 +1,22 @@
 package bbva.kumite.bbva_suggest;
 
+import android.Manifest;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -22,7 +27,7 @@ import java.util.List;
  * Use the {@link RecommendationsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecommendationsFragment extends CustomFragment {
+public class RecommendationsFragment extends Fragment {
     private final List<HashMap<String, Object>> recommendationsMap = new ArrayList<>();
     ListView lv;
     private OnFragmentInteractionListener mListener;
@@ -47,7 +52,8 @@ public class RecommendationsFragment extends CustomFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {}
+        if (getArguments() != null) {
+        }
     }
 
     @Override
@@ -56,30 +62,37 @@ public class RecommendationsFragment extends CustomFragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_recomendation, container, false);
 
+        TextView mainText = v.findViewById(R.id.textViewRecomm);
         setRecommendations();
+        mainText.setText(Utilities.recommendations.size() == 0 ? "¡Lo sentimos mucho Carlos! No tenemos recomendaciones para tí, ¿has probado a seleccionar más categorías?" : "¡Hola Carlos! Tus recomendaciones de hoy son...");
+
         // Keys used in Hashmap
-        String[] from = { "icon","mTitle", "mDescription"};
+        String[] from = {"mCategory", "mTitle", "mDescription"};
 
         // Ids of views in listview_layout
-        int[] to = { R.id.imgCategorySingle, R.id.textTitleSingle, R.id.textDescSingle};
+        int[] to = {R.id.imgCategorySingle, R.id.textTitleSingle, R.id.textDescSingle};
 
         lv = v.findViewById(R.id.listRecommendations);
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
         final RecommendationsListAdapter adapter = new RecommendationsListAdapter(v.getContext(), recommendationsMap, from, to);
-
+        ActivityCompat.requestPermissions(this.getActivity(),
+                new String[]{Manifest.permission.INTERNET},
+                0);
         lv.setAdapter(adapter);
         return v;
     }
 
     private void setRecommendations() {
-        for(Recommendation rec : recommendations){
+        recommendationsMap.clear();
+        Recommendation.getRecommendations();
+        for (Recommendation rec : Utilities.recommendations) {
             HashMap<String, Object> hm = new HashMap<>();
             hm.put("mTitle", rec.mTitle);
             hm.put("mDescription", rec.mDescription);
-            hm.put("mImageURL", Utilities.findCategory(rec.mImageURL));
+            hm.put("mImageURL", rec.mImageURL);
             hm.put("mDate", rec.mDate);
-            hm.put("mCategory", rec.mCategory);
+            hm.put("mCategory", Utilities.findCategory(rec.mCategory));
             hm.put("mPhoneNumber", rec.mPhoneNumber);
             hm.put("mUrl", rec.mUrl);
             recommendationsMap.add(hm);

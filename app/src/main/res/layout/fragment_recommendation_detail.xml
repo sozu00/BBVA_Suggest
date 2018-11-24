@@ -1,20 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecommendationDetail">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/recommImg"
         android:layout_width="match_parent"
-        android:layout_height="123dp"
+        android:cropToPadding="true"
+        android:layout_height="233dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:src="@drawable/logo_transparente" />
+        android:src="@drawable/logo_transparente"
+        app:srcCompat="@drawable/background" />
+
+    <TextView
+        android:id="@+id/recommTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recommImg"
+        android:text="Recomendación"
+        android:textColor="@color/colorPrimaryDark"
+        android:padding="10dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/recommDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recommTitle"
+        android:padding="10dp"
+        android:text="10/10/2018 - 20/10/2018"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="sans-serif" />
+    <TextView
+        android:id="@+id/recommDesciption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recommDate"
+        android:padding="10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sapien risus, ullamcorper nec accumsan nec, auctor id leo. Vestibulum nisl sapien, efficitur sed blandit eget, tempor vel nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/recommMoreInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recommDesciption"
+        android:layout_marginTop="14dp"
+        android:padding="5dp"
+        android:text="¿Quieres más información?"
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="sans-serif"
+        android:layout_alignParentLeft="true" />
+
+    <RelativeLayout
+        android:id="@+id/recommContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recommMoreInfo"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/recommPhoneIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:tint="@color/colorAccent"
+            app:srcCompat="@android:drawable/stat_sys_phone_call"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/recommContactPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/recommPhoneIcon"
+            android:text="666111222"
+            android:textColor="@color/colorPrimaryDark"
+            app:fontFamily="sans-serif"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/recommURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recommContact"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/recommURLIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:tint="@color/design_default_color_primary_dark"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
+        <TextView
+            android:id="@+id/recommURLText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/recommURLIcon"
+            android:text="http://www.google.es"
+            android:textColor="@color/colorPrimaryDark"
+            app:fontFamily="sans-serif"/>
+    </RelativeLayout>
+    <!--
+    Integer mCategory;
+    String mPhoneNumber;
+    String mUrl;-->
+
 </RelativeLayout>
+</ScrollView>

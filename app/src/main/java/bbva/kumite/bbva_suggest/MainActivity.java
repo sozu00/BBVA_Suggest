@@ -8,23 +8,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity
         extends AppCompatActivity
         implements CategoriesFragment.OnFragmentInteractionListener,
         RecommendationsFragment.OnFragmentInteractionListener,
-        SettingsFragment.OnFragmentInteractionListener
-        {
+        SettingsFragment.OnFragmentInteractionListener,
+        HelpFragment.OnFragmentInteractionListener,
+        RecommendationDetail.OnFragmentInteractionListener,
+        TermsAndConditions.OnFragmentInteractionListener{
 
-    private TextView mTextMessage;
-    List<Recommendation> recommendations = new ArrayList<>();
-    Fragment recommendationsFragment = RecommendationsFragment.newInstance(recommendations);
-    Fragment categoriesFragment = CategoriesFragment.newInstance(recommendations);
-    Fragment settingsFragment = SettingsFragment.newInstance(recommendations);
+
+    RecommendationsFragment recommendationsFragment = new RecommendationsFragment();
+    CategoriesFragment categoriesFragment = new CategoriesFragment();
+    SettingsFragment settingsFragment = new SettingsFragment();
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

@@ -21,7 +21,24 @@ class RecommendationsListAdapter extends SimpleAdapter {
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
         final View v = super.getView(position, convertView, parent);
-        //final RecommendationData u = (RecommendationData) elements.get(position).get("data");
+
+        final HashMap<String, Object> recMap = elements.get(position);
+       v.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               RecommendationDetail detail = new RecommendationDetail();
+               Recommendation rec = new Recommendation();
+               rec.mTitle = (String) recMap.get("mTitle");
+               rec.mDescription = (String) recMap.get("mDescription");
+               rec.mImageURL = (String) recMap.get("mImageURL");
+               rec.mDate = (String) recMap.get("mDate");
+               rec.mPhoneNumber = (String) recMap.get("mPhoneNumber");
+               rec.mUrl = (String) recMap.get("mUrl");
+
+               detail.setRecommendationData(rec);
+               myActivity.setFragment(detail);
+           }
+        });
         return v;
     }
 

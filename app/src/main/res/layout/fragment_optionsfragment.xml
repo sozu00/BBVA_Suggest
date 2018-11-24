@@ -3,59 +3,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".SettingsFragment"
+    android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="342dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+    <FrameLayout
+        android:id="@+id/frameLogOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="49dp"
-        android:text="Cerrar sesión"
-        android:textSize="35dp" />
+        android:layout_centerHorizontal="true">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="342dp"
-        android:layout_height="56dp"
-        android:layout_alignStart="@+id/textView7"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="150dp"
-        android:text="Soporte y ayuda"
-        android:textSize="35dp"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_marginLeft="2dp" />
+        <ImageView
+            android:id="@+id/imageViewLogOff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/button_background" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="342dp"
-        android:layout_height="99dp"
-        android:layout_below="@+id/textView8"
-        android:layout_alignStart="@+id/textView7"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="51dp"
-        android:text="Términos y condiciones"
-        android:textSize="35dp"
-        android:layout_marginLeft="3dp"
-        android:layout_alignLeft="@+id/textView7" />
+        <TextView
+            android:id="@+id/textViewLogOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cerrar sesión"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+    </FrameLayout>
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="344dp"
-        android:layout_height="73dp"
-        android:layout_below="@+id/textView9"
-        android:layout_alignStart="@+id/textView7"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="52dp"
-        android:text="Invita a un amigo"
-        android:textSize="35dp"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_marginLeft="2dp" />
+    <FrameLayout
+        android:id="@+id/frameHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameLogOff"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp">
+
+        <ImageView
+            android:id="@+id/imageViewHelp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/button_background" />
+
+        <TextView
+            android:id="@+id/textViewHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Soporte y ayuda"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameHelp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp">
+
+        <ImageView
+            android:id="@+id/imageViewTerms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/button_background" />
+
+        <TextView
+            android:id="@+id/textViewTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Términos y \ncondiciones"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameInviteAFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameTerms"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp">
+
+        <ImageView
+            android:id="@+id/imageViewInviteAFriend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/button_background" />
+
+        <TextView
+            android:id="@+id/textViewInviteAFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Invita a un amigo"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+    </FrameLayout>
+
 </RelativeLayout>
