@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BBVA_Suggest</string>
+    <string name="app_name">BBVASuggest</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña</string>

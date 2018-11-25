@@ -203,7 +203,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isPasswordValid(String password) {
-        return password == "liquidBBVA2018";
+        return password.contains("liquidBBVA2018");
     }
 
     /**
